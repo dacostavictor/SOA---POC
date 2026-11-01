@@ -1,0 +1,17 @@
+[
+  {
+    "sku": "SKU-001",
+    "nome": "Teclado Mecanico",
+    "saldo": 50
+  },
+  {
+    "sku": "SKU-002",
+    "nome": "Mouse Gamer",
+    "saldo": 30
+  },
+  {
+    "sku": "SKU-003",
+    "nome": "Monitor 27\"",
+    "saldo": 5
+  }
+]

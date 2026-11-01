@@ -21,7 +21,5 @@ app.get("/admin/produtos", (req, res) => res.json(repo.listar()));
 
 app.listen(PORT, () => {
   soap.listen(app, "/estoque", services, wsdl);
-  console.log(
-    `[estoque] SOAP em http://localhost:${PORT}/estoque (WSDL: ?wsdl)`,
-  );
+  console.log(`[estoque] SOAP em http://localhost:${PORT}`);
 });
