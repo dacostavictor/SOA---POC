@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vendas · PoC SOA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🛒 Sistema de Vendas</h1><span class="tag">REST/JSON · porta 4001</span>
+    <nav>
+      <a href="http://localhost:3000" target="_blank">Mediador</a>
+      <a href="http://localhost:4002" target="_blank">Estoque</a>
+    </nav>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Novo pedido</h2>
+      <form id="form">
+        <div style="margin-bottom:12px"><label for="cliente">Cliente</label>
+          <input id="cliente" required placeholder="Nome do cliente" style="width:100%;max-width:360px"></div>
+        <label>Itens</label>
+        <div id="itens"></div>
+        <div class="row" style="margin-top:6px">
+          <button type="button" class="ghost" id="add">+ Adicionar item</button>
+          <button type="submit" id="enviar">Enviar pedido</button>
+        </div>
+      </form>
+      <div id="resultado" hidden></div>
+    </section>
+
+    <section class="card">
+      <div class="row" style="justify-content:space-between;margin-bottom:10px">
+        <h2 style="margin:0">Pedidos</h2>
+        <div class="row"><span class="mut" id="atualizado"></span><button class="ghost" id="refresh">Atualizar</button></div>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Data</th><th>Cliente</th><th>Itens</th><th>Status</th><th>Processado por</th><th>Motivo</th></tr></thead>
+        <tbody id="pedidos"></tbody>
+      </table></div>
+      <p class="mut" id="vazio" hidden>Nenhum pedido ainda.</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

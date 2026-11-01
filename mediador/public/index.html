@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mediador · PoC SOA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🔀 Mediador (ESB)</h1><span class="tag" id="instancia">carregando…</span>
+    <nav>
+      <a href="http://localhost:3000" target="_blank">mediador-1</a>
+      <a href="http://localhost:3001" target="_blank">mediador-2</a>
+      <a href="http://localhost:4001" target="_blank">Vendas</a>
+      <a href="http://localhost:4002" target="_blank">Estoque</a>
+    </nav>
+  </header>
+  <main>
+    <section class="grid">
+      <div class="card stat">Status<b id="status">—</b></div>
+      <div class="card stat">Mensagens no log<b id="total">0</b></div>
+      <div class="card stat">Chamadas SOAP<b id="soap">0</b></div>
+      <div class="card stat">Erros<b id="erros">0</b></div>
+    </section>
+    <section class="card">
+      <div class="row" style="justify-content:space-between;margin-bottom:10px">
+        <h2 style="margin:0">Log de mensagens do barramento</h2>
+        <div class="row">
+          <input id="filtro" placeholder="Filtrar por correlationId / operação">
+          <span class="mut" id="atualizado"></span>
+        </div>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Hora</th><th>Correlation</th><th>Tipo</th><th>Operação</th><th>Payload</th></tr></thead>
+        <tbody id="logs"></tbody>
+      </table></div>
+      <p class="mut">O log é em memória desta instância: cada mediador mostra apenas as mensagens que ele próprio processou (útil para evidenciar o failover).</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

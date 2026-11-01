@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estoque · PoC SOA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📦 Sistema de Estoque</h1><span class="tag">SOAP/WSDL · porta 4002</span>
+    <nav>
+      <a href="/estoque?wsdl" target="_blank">Ver WSDL</a>
+      <a href="http://localhost:4001" target="_blank">Vendas</a>
+      <a href="http://localhost:3000" target="_blank">Mediador</a>
+    </nav>
+  </header>
+  <main>
+    <section class="grid" id="resumo"></section>
+    <section class="card">
+      <div class="row" style="justify-content:space-between;margin-bottom:10px">
+        <h2 style="margin:0">Saldo de produtos</h2>
+        <span class="mut" id="atualizado"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>SKU</th><th>Produto</th><th>Saldo</th><th>Situação</th></tr></thead>
+        <tbody id="produtos"></tbody>
+      </table></div>
+      <p class="mut">Painel somente leitura, apenas para acompanhar a demo. As operações reais do sistema são SOAP (verificarEstoque, baixarEstoque, reporEstoque).</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
