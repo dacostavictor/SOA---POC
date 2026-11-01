@@ -1,0 +1,8 @@
+{
+  "name": "vendas-service",
+  "version": "1.0.0",
+  "description": "Sistema de Vendas (REST/JSON)",
+  "main": "src/server.js",
+  "scripts": { "start": "node src/server.js" },
+  "dependencies": { "express": "^4.19.2" }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "mediador-esb",
+  "version": "1.0.0",
+  "description": "Mini-ESB: roteamento, transformacao REST<->SOAP, validacao e log de mensagens",
+  "main": "src/server.js",
+  "scripts": { "start": "node src/server.js" },
+  "dependencies": { "express": "^4.19.2", "soap": "^1.1.5" }
+}

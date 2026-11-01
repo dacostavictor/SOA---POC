@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info: { title: Sistema de Vendas, version: 1.0.0 }
+paths:
+  /pedidos:
+    post:
+      summary: Cria um pedido (reserva estoque via mediador)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cliente, itens]
+              properties:
+                cliente: { type: string }
+                itens:
+                  type: array
+                  items:
+                    type: object
+                    required: [sku, quantidade]
+                    properties: { sku: { type: string }, quantidade: { type: integer, minimum: 1 } }
+      responses:
+        '201': { description: Pedido CONFIRMADO }
+        '400': { description: Dados invalidos }
+        '409': { description: Pedido REJEITADO (ex. estoque insuficiente) }
+        '503': { description: Mediador indisponivel (FALHA_INTEGRACAO) }
+    get: { summary: Lista pedidos, responses: { '200': { description: OK } } }
+  /pedidos/{id}:
+    get:
+      summary: Busca pedido
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      responses: { '200': { description: OK }, '404': { description: Nao encontrado } }

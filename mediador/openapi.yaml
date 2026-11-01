@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info: { title: Mediador (ESB) - Modelo Canonico, version: 1.0.0 }
+paths:
+  /api/v1/pedidos:
+    post:
+      summary: Processa pedido canonico (verifica e baixa estoque via SOAP)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [pedidoId, itens]
+              properties:
+                pedidoId: { type: string }
+                itens:
+                  type: array
+                  items:
+                    type: object
+                    required: [sku, quantidade]
+                    properties: { sku: { type: string }, quantidade: { type: integer, minimum: 1 } }
+      responses:
+        '200': { description: "status: CONFIRMADO" }
+        '400': { description: Mensagem canonica invalida }
+        '409': { description: "status: REJEITADO" }
+        '502': { description: Estoque indisponivel }
+  /logs: { get: { summary: Log de mensagens do barramento, responses: { '200': { description: OK } } } }
+  /health: { get: { summary: Health check, responses: { '200': { description: OK } } } }

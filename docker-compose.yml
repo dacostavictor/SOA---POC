@@ -1,0 +1,36 @@
+services:
+  estoque:
+    build: ./estoque
+    ports: ["4002:4002"]
+    environment:
+      DATA_DIR: /data
+    volumes: [estoque-data:/data]
+
+  mediador-1:
+    build: ./mediador
+    ports: ["3000:3000"]
+    environment:
+      INSTANCE_ID: mediador-1
+      ESTOQUE_URL: http://estoque:4002/estoque
+    depends_on: [estoque]
+
+  mediador-2:
+    build: ./mediador
+    ports: ["3001:3000"]
+    environment:
+      INSTANCE_ID: mediador-2
+      ESTOQUE_URL: http://estoque:4002/estoque
+    depends_on: [estoque]
+
+  vendas:
+    build: ./vendas
+    ports: ["4001:4001"]
+    environment:
+      DATA_DIR: /data
+      MEDIADOR_URLS: http://mediador-1:3000,http://mediador-2:3000
+    volumes: [vendas-data:/data]
+    depends_on: [mediador-1, mediador-2]
+
+volumes:
+  estoque-data:
+  vendas-data:
